@@ -6,5 +6,6 @@ Install Docker Compose
 Run the app with ```docker-compose up```
 
 # Misc
-There is a wrapper to run rails commands from inside of the container that exists: ./bin/rails-wrapper.sh
-This wrapper needs to be run with sudo because it will chown the files to the current user after running any rails command.
+There is a wrapper to run rails commands from inside of the container that exists: ./rails
+This wrapper needs to have executable permissions. Once it does it can be used in place of the
+normal rails command like so: ./rails routes

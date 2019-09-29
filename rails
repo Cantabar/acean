@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+export CURRENT_UID=$(id -u):$(id -g)
+docker-compose run web rails $@
+
+# Remove the container that was just run to keep things clean
+docker rm -v $(docker ps -aq -f 'status=exited')

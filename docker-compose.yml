@@ -11,5 +11,6 @@ services:
       - ./rails-app:/app
     ports:
       - "3000:3000"
+    user: ${CURRENT_UID}
     depends_on:
       - db
