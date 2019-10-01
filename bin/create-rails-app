@@ -4,7 +4,23 @@ if [[ $(id -u) -ne 0 ]]; then
     echo "has full permission to create files at the root of the container"
     exit 1
 fi
-./rails new /app -d postgresql --webpack=react --skip-coffee
+
+# TODO: Check to see if the rails-app directory exists and then ask permission to delete it
+echo "Initializing rails-app directory"
+mkdir rails-app
+
+echo "Initializing Gemfile"
+echo "source 'https://rubygems.org'" > rails-app/Gemfile
+echo "gem 'rails', '~>5'" >> rails-app/Gemfile
+
+echo "Initializing Gemfile.lock
+touch rails-app/Gemfile.lock"
+
+./rails new /app --force -d postgresql --webpack=react --skip-coffee
 
 echo "Changing ownership of all generated files to $(logname):docker ..."
 chown -R $(logname):docker rails-app/
+
+# TODO: Do this for the user
+echo "***********************************************************************************************"
+echo "Please update the database config at rails-app/config/database.yml to point to the db container"
