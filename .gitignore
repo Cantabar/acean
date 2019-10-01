@@ -1,2 +1,5 @@
+# Ignore local env files
+.env
+
 # Ignore tmp directory used to store local db files
 tmp/*
