@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export CURRENT_UID=$(id -u):$(id -g)
-docker-compose run web rails $@
+docker-compose run web yarn $@
 
 # Remove the container that was just run to keep things clean
 echo "Removing command container..."
